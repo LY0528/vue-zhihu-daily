@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <span></span>
+      <span @click="isShow = !isShow"></span>
       <mt-header fixed title="今日热闻"></mt-header>
     </div>
     <div class="banner">
@@ -17,11 +17,20 @@
         <li v-for="stories in stories">
           <a href="#">
             <p class="title">{{stories.title}}</p>
-            <img :src="stories.images">
+            <!-- <img :src="stories.images"> -->
           </a>
         </li>
       </ul>
     </div>
+    <div class="side" v-show='isShow'> 
+      <div class="sidebar">
+        <div class="user">
+          <button @click="isShow = !isShow">点击</button>
+        </div>
+      </div>    
+      <div class="mask"></div>
+    </div>
+    
   </div>
 </template>
 <script>
@@ -33,7 +42,8 @@ export default {
   data (){
     return {
       top_stories:[],
-      stories:[]
+      stories:[],
+      isShow:false
     }
   },
   created(){
@@ -43,8 +53,7 @@ export default {
     fetchDate:function(){
       axios.get('api/news/latest', {}).then((response) => {
         this.top_stories = response.data.top_stories
-        this.stories = response.data.stories
-        
+        this.stories = response.data.stories        
       })
     }
   }
@@ -118,18 +127,42 @@ export default {
         a
           display:block
           width:100%
-          vertical-align:middle
           .title
             display:inline-block
             height:80px
             width:70%
             padding:20px 10px
-            line-height:20px
+            line-height:30px
+            color:black
+            vertical-align:middle
           img
             display:inline-block
             width:80px
             height:60px
             background:skyblue
             vertical-align:middle
+  .side
+    width:100%
+    height:667px
+    position:fixed
+    top:0
+    left:0  
+    .sidebar
+      width:60%
+      height:667px
+      position:absolute
+      top:0
+      left:0
+      background:#666
+      padding:10px 5px
+      .user
+        width:100%
+        height:50px
+        background:skyblue
+    .mask
+      width:100%
+      height:667px
+      background:rgba(0,0,0,0.4)
+    
           
 </style>
