@@ -11,10 +11,10 @@ Vue.component(SwipeItem.name, SwipeItem)
 Vue.use(VueRouter)
 import './common/stylus/index.styl'
 import homePage from './components/homePage/homePage'
-import psychology from './components/psychology/psychology'
+import themeDetail from './components/themeDetail/themeDetail'
 var routes = [
 	{path:'/homePage',component:homePage},
-	{path:'/psychology',component:psychology}
+	{path:'/themeDetail/:id',component:themeDetail}
 ]
 var router = new VueRouter({
 	routes
