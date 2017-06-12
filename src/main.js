@@ -12,9 +12,11 @@ Vue.use(VueRouter)
 import './common/stylus/index.styl'
 import homePage from './components/homePage/homePage'
 import themeDetail from './components/themeDetail/themeDetail'
+import moreNews from './components/moreNews/moreNews'
 var routes = [
 	{path:'/homePage',component:homePage},
-	{path:'/themeDetail/:id',component:themeDetail}
+	{path:'/themeDetail/:id',component:themeDetail},
+	{path:'/moreNews/:id?',component:moreNews}
 ]
 var router = new VueRouter({
 	routes

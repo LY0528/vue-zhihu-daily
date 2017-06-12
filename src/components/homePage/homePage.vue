@@ -17,10 +17,10 @@
     <div class="content">
       <ul class="list">
         <li v-for="stories in stories">
-          <a href="#">
+          <router-link :to="'/moreNews/:'+stories.id">
             <p class="title">{{stories.title}}</p>
             <img :src="stories.images">
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -100,8 +100,7 @@ export default {
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-#app
-  .header-fixed
+.header-fixed
     width:100%
     position:fixed
     top:0
@@ -125,7 +124,7 @@ export default {
         line-height:50px
         font-size:20px
         background:#028fd6
-  .banner
+.banner
     margin-top:50px
     height:200px
     .mint-swipe
@@ -167,7 +166,7 @@ export default {
           border:1px solid #ccc
         .is-active          
           background:#666
-  .content
+.content
     .list
       li
         border-bottom:1px solid #ccc
@@ -188,7 +187,7 @@ export default {
             height:60px
             background:skyblue
             vertical-align:middle
-  .mask
+.mask
     position:fixed
     top:0
     left:0
