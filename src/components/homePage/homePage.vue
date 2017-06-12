@@ -256,8 +256,6 @@ export default {
               .icon
                 padding-left:22px
                 background:url('../../../static/images/home.svg') left center no-repeat
-                background-size:18px
-
-    
+                background-size:18px    
           
 </style>

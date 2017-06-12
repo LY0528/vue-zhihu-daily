@@ -19,7 +19,8 @@ var routes = [
 	{path:'/moreNews/:id?',component:moreNews}
 ]
 var router = new VueRouter({
-	routes
+	routes,
+	linkActiveClass: 'active'
 })
 var app = new Vue({
 	router,

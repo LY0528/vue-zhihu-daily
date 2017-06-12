@@ -12,33 +12,54 @@
 				<h2 class="title">{{title}}</h2>
 			</div>
     	<div v-html="body" class="content"></div>
+			<div class="comment">
+	    	<div class="tab">
+					<div class="tab-item" :class="{active:short_isActive}" @click="short_isActive=!short_isActive;getShortComments(id)" v-if="short_comments">查看短评({{short_comments}})</div>
+					<div class="tab-item" :class="{active:long_isActive}" @click="long_isActive=!long_isActive" v-if="long_comments">查看长评({{long_comments}})</div>
+    		</div>	
+			</div>
     </div>
 	</div>
 </template>
 <script type="text/javascript">
-//import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 export default{
 	data (){
 		return {
-			id:this.$route.params.id,
+			id:this.$route.params.id.split(":")[1],
 			title:'',
 			body:'',
 			css:'',
-			images:'../../../static/images/logo.png'
+			images:'../../../static/images/logo.png',
+			long_comments:'',
+			short_comments:'',
+			long_isActive:false,
+			short_isActive:false
 		}
 	},
 	created (){
-		this.fetchDate(this.id.split(":")[1])
+		this.fetchDate(this.id)
+		this.getComments(this.id)
 	},
 	methods:{
 		fetchDate:function(id){
      	axios.get('api/news/'+id, {}).then((response) => {
-				this.title = response.data.title  
-				this.body = response.data.body
-				this.css =  response.data.css
-				this.images =  response.data.images?response.data.images:this.images
+			this.title = response.data.title  
+			this.body = response.data.body
+			this.css =  response.data.css
+			this.images =  response.data.images?response.data.images:this.images
+     	})
+		},
+		getComments:function(id){
+     	axios.get('api/story-extra/'+id, {}).then((response) => {
+				this.long_comments = response.data.long_comments
+				this.short_comments = response.data.short_comments
+     	})			
+		},
+		getShortComments:function(id){
+     	axios.get('api/story/'+id+'/short-comments', {}).then((response) => {
+				console.log(response)
      	})
 		}
 	}
@@ -83,18 +104,30 @@ export default{
 			font-weight :700
 			text-align:center
 	.content
+		margin-bottom:5px
 		.main-wrap
 			.headline
 				border:0
 				.img-place-holder
 					height:0
 			.content-inner
-				.meta
-					img
-						display:inline-block
-						margin:0
-					.author
-						color:#fc4482
-						
+				.answer
+					.meta
+						img
+							display:inline-block
+							margin:0
+						.author
+							color:#fc4482
+				.view-more
+					margin-bottom:5px
+.comment
+	.tab
+		.tab-item
+			padding-left:20px
+			background:url('../../../static/images/shrink.svg') left center no-repeat
+			background-size:17px
+		.active
+			background:url('../../../static/images/unfold.svg') left no-repeat
+			background-size:23px
 
 </style>
