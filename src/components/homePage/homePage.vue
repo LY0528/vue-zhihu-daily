@@ -9,8 +9,10 @@
     <div class="banner">
       <mt-swipe :auto="2000">
         <mt-swipe-item v-for="story in top_stories">
-          <img :src="story.image">
-          <p class="title">{{story.title}}</p>
+          <router-link :to="'/moreNews/:'+story.id">
+            <img :src="story.image">
+            <p class="title">{{story.title}}</p>
+          </router-link>
         </mt-swipe-item>
       </mt-swipe>
     </div>
@@ -141,17 +143,19 @@ export default {
           height:100%
         .is-active
           display:block
-          img
+          a
             display:block
-            width:100%
-            height:200px
-          .title
-            position:absolute
-            bottom:45px
-            left:0
-            color:#fff
-            font-size :18px
-            padding:0 10px
+            img
+              display:block
+              width:100%
+              height:200px
+            .title
+              position:absolute
+              bottom:45px
+              left:0
+              color:#fff
+              font-size :18px
+              padding:0 10px
       .mint-swipe-indicators        
           position:absolute
           bottom:10px

@@ -1,11 +1,13 @@
 <template>
 	<div>
+  <!-- 头部 -->
     <div class="header-fixed">
       <div class="header">
         <span @click="isShow = !isShow;getThemes()"></span>
         <mt-header fixed :title="title"></mt-header>
       </div>
     </div>
+    <!-- 内容 -->
 	  <div class="contents">
 	  	<div class="descript">
 	  		<div class="bg-img">
@@ -22,6 +24,7 @@
 	  		</li>
 	  	</ul>
 	  </div>
+    <!-- 遮罩层和侧边栏 -->
     <div class="mask" v-show='isShow' @touchmove.prevent>
       <div class="side" v-show='isShow'> 
         <div class="sidebar">
@@ -67,8 +70,10 @@
 	</div>
 </template>
 <script type="text/javascript">
+import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
 export default{
 	data (){
 		return {
