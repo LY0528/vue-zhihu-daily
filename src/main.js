@@ -16,7 +16,7 @@ import moreNews from './components/moreNews/moreNews'
 var routes = [
 	{path:'/homePage',component:homePage},
 	{path:'/themeDetail/:id',component:themeDetail},
-	{path:'/moreNews/:id?',component:moreNews}
+	{path:'/moreNews/:id',component:moreNews}
 ]
 var router = new VueRouter({
 	routes,

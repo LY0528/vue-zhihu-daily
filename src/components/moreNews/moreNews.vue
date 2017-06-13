@@ -17,17 +17,19 @@
     	<div v-html="body" class="content"></div>
     </div>
     <!-- 上一页、下一页 -->
-		<div class="handle">
-			<div class="handle-item">
-				<span class="back"></span>
+		<div class="handles">
+			<div class="handles-item">
+				<span class="back" @click="back()"></span>
 			</div>
-			<div class="handle-item">
-				<span class="next"></span>
+			<div class="handles-item">
+				<span class="next">
+					<!-- <router-link to="/moreNews/9465467"></router-link> -->
+				</span>
 			</div>
-			<div class="handle-item">
+			<div class="handles-item">
 				<span class="good"><i class="good_num">{{popularity }}</i></span>
 			</div>
-			<div class="handle-item">
+			<div class="handles-item">
 				<span class="comments"><i class="comments_num">{{commentsNum}}</i></span>
 			</div>
 		</div>
@@ -76,7 +78,7 @@ Vue.use(VueAxios, axios)
 export default{
 	data (){
 		return {
-			id:this.$route.params.id.split(":")[1],
+			id:this.$route.params.id,
 			title:'',
 			body:'',
 			css:'',
@@ -134,7 +136,10 @@ export default{
 					this.long_times[i] = new Date(parseInt(this.long_comments[i].time+'000')).toLocaleString()
 				}
      	})
-		}		
+		},
+		back:function(){
+			this.$router.go(-1)
+		}
 	}
 }
 </script>
@@ -193,10 +198,14 @@ export default{
 							color:#fc4482
 				.view-more
 					margin-bottom:5px
-.handle
+.handles
+	position:fixed
+	bottom:0px
+	width:100%
+	z-index:10
 	display:flex
 	background:#f1f1f1
-	.handle-item
+	.handles-item
 		flex:1
 		text-align:center
 		line-height:50px
@@ -225,6 +234,7 @@ export default{
 			position:relative
 .comment
 	padding:5px 10px
+	margin-bottom:50px
 	.tab
 		.tab-item
 			.title
@@ -268,7 +278,7 @@ export default{
 						i
 							position:absolute
 							top:0
-							right:-3px
+							right:-5px
 							font-size :12px
 					
 </style>

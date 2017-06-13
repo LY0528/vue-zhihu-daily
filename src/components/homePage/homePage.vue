@@ -9,7 +9,7 @@
     <div class="banner">
       <mt-swipe :auto="2000">
         <mt-swipe-item v-for="story in top_stories">
-          <router-link :to="'/moreNews/:'+story.id">
+          <router-link :to="'/moreNews/'+story.id">
             <img :src="story.image">
             <p class="title">{{story.title}}</p>
           </router-link>
@@ -19,7 +19,7 @@
     <div class="content">
       <ul class="list">
         <li v-for="stories in stories">
-          <router-link :to="'/moreNews/:'+stories.id">
+          <router-link :to="'/moreNews/'+stories.id">
             <p class="title">{{stories.title}}</p>
             <img :src="stories.images">
           </router-link>
@@ -60,7 +60,7 @@
               <router-link to="/homePage" class="icon">首页</router-link>
             </li>
             <li class="themes-list" v-for="theme in themes" @click="isShow=!isShow">
-              <router-link :to="'/themeDetail/:'+theme.id">{{theme.name}}</router-link>
+              <router-link :to="'/themeDetail/'+theme.id">{{theme.name}}</router-link>
             </li>
           </ul>
         </div>

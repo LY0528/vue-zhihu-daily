@@ -17,7 +17,7 @@
 	  	</div>
 	  	<ul class="content-list">
 	  		<li class="content" v-for="story in stoties">
-	  			<router-link :to="'/moreNews/:'+story.id">
+	  			<router-link :to="'/moreNews/'+story.id">
 	  				<span class="title">{{story.title}}</span>
 	  				<img :src="story.images" v-if="story.images" class="image">
 	  			</router-link>
@@ -59,7 +59,7 @@
               <router-link to="/homePage" class="icon">首页</router-link>
             </li>
             <li class="themes-list" v-for="theme in themes" @click="isShow=!isShow">
-              <router-link :to="'/themeDetail/:'+theme.id">							{{theme.name}}
+              <router-link :to="'/themeDetail/'+theme.id">							{{theme.name}}
               </router-link>
             </li>
           </ul>
@@ -87,7 +87,7 @@ export default{
 		}
 	},
 	created (){
-		this.fetchDate(this.id.split(":")[1])
+		this.fetchDate(this.id)
 	},
 	methods:{
 		fetchDate:function(id){
