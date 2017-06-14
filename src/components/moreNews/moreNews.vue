@@ -22,12 +22,10 @@
 				<span class="back" @click="back()"></span>
 			</div>
 			<div class="handles-item">
-				<span class="next">
-					<!-- <router-link to="/moreNews/9465467"></router-link> -->
-				</span>
+				<span class="next" @click="nextPage"></span>
 			</div>
 			<div class="handles-item">
-				<span class="good"><i class="good_num">{{popularity }}</i></span>
+				<span class="good"><i class="good_num">{{popularity}}</i></span>
 			</div>
 			<div class="handles-item">
 				<span class="comments"><i class="comments_num">{{commentsNum}}</i></span>
@@ -139,6 +137,9 @@ export default{
 		},
 		back:function(){
 			this.$router.go(-1)
+		},
+		nextPage:function(){
+			this.$emit('toggleNews')
 		}
 	}
 }

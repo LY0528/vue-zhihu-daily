@@ -16,8 +16,8 @@
 	  		<div class="title">{{description}}</div>
 	  	</div>
 	  	<ul class="content-list">
-	  		<li class="content" v-for="story in stoties">
-	  			<router-link :to="'/moreNews/'+story.id">
+	  		<li class="content" v-for="story in stories">
+	  			<router-link :to="'/moreNews/'+story.id" @toggleNews="toggleNewsFn(story.id)">
 	  				<span class="title">{{story.title}}</span>
 	  				<img :src="story.images" v-if="story.images" class="image">
 	  			</router-link>
@@ -80,10 +80,12 @@ export default{
 			isShow:false,
 			id:this.$route.params.id,
 			title:'',
-			stoties:[],
+			stories:[],
 			description:'',
 			background:'',
-			themes:[]
+			themes:[],
+      newsList:[],
+      nextId:''
 		}
 	},
 	created (){
@@ -93,15 +95,22 @@ export default{
 		fetchDate:function(id){
      	axios.get('api/theme/'+id, {}).then((response) => {
      	  this.title = response.data.name   
-     	  this.stoties = response.data.stories   
+     	  this.stories = response.data.stories   
      	  this.description = response.data.description   
-     	  this.background = response.data.background   
+     	  this.background = response.data.background
+        for(var i=0;i<this.stories.length;i++){
+          this.newsList[i] = this.stories[i].id
+        }  
      	})
    	},
     getThemes:function(){
       axios.get('api/themes', {}).then((response) => {
         this.themes = response.data.others
       })
+    },
+    toggleNewsFn(id){
+      var num = this.newsList.indexOf(id)//当前id的位置
+      this.nextId = this.newsList[num+1]//下一个id
     }
 	}
 }
