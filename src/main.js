@@ -4,7 +4,7 @@ import { Header, Swipe, SwipeItem } from 'mint-ui'
 import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false
-
+// 引入mint组件
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)

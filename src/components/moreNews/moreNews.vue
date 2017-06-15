@@ -16,7 +16,7 @@
 				<span class="back" @click="back()"></span>
 			</div>
 			<div class="handles-item">
-				<span class="next" @click="nextPage"></span>
+				<span class="next"></span>
 			</div>
 			<div class="handles-item">
 				<span class="good"><i class="good_num">{{popularity}}</i></span>
@@ -128,25 +128,11 @@ export default{
 		},
 		back:function(){
 			this.$router.go(-1)
-		},
-		nextPage:function(){
-			this.$emit('toggleNews')
 		}
 	}
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-.header-fixed
-  .header
-    span
-      display:block
-      width:28px
-      height:28px
-      background:url('../../../static/images/back.svg') center no-repeat
-      background-size:28px
-      position:absolute
-      top:12px
-      left:15px
 .content-part
 	.header
 		position:relative

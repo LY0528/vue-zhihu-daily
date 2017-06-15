@@ -7,6 +7,10 @@
 <script>
 import vHeader from './components/header/header'
 export default {
+  data(){
+    return {
+    }
+  },
 	components:{
 		vHeader
 	},

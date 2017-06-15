@@ -41,6 +41,9 @@
             <li class="themes-list" v-for="theme in themes" @click="isShow=!isShow">
               <router-link :to="'/themeDetail/'+theme.id">{{theme.name}}</router-link>
             </li>
+            <li class="themes-list">
+              <a href="https://github.com/LY0528/vue-zhihu-daily" target="_blank">github地址</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -151,6 +154,8 @@ export default {
             font-size :16px
             line-height:24px
       .theme
+        ul
+          padding-left:0
         .themes
           .themes-list
             a
@@ -158,8 +163,11 @@ export default {
               height:38px
               line-height:38px
               color:#fff
+            .active
+              color:skyblue
             .icon
               padding-left:22px
               background:url('../../../static/images/home.svg') left center no-repeat
               background-size:18px    
+
 </style>

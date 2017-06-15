@@ -67,22 +67,6 @@ export default{
 import '../../common/stylus/index.styl'
 .header-fixed
   width:100%
-  position:fixed
-  top:0
-  left:0
-  z-index:10
-  .header
-    position:relative
-    height:50px   
-    span
-      display:block
-      width:20px
-      height:20px
-      background:url('../../../static/images/Category.svg') centeno-repeat
-      background-size:20px
-      position:absolute
-      top:15px
-      left:15px 
 .contents
 	margin-top:50px
 	background:#f9f9f9
