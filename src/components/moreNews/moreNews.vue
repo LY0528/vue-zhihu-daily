@@ -2,12 +2,6 @@
 	<div>
 	<!-- 外部资源的css文件 -->
 		<link rel="stylesheet" type="text/css" :href="css">
-		<!-- 头部 -->
-    <div class="header-fixed">
-      <div class="header">
-        <span></span>
-      </div>
-    </div>
     <!-- 内容区 -->
     <div class="content-part">
 			<div class="header">
@@ -69,10 +63,7 @@
 	</div>
 </template>
 <script type="text/javascript">
-import Vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
 export default{
 	data (){
 		return {
@@ -146,15 +137,7 @@ export default{
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .header-fixed
-  width:100%
-  position:fixed
-  top:0
-  left:0
-  z-index:10
   .header
-    position:relative
-    height:50px  
-    background:linear-gradient(0deg,transparent,rgba(0,0,0,.51) 95%)    
     span
       display:block
       width:28px
@@ -163,7 +146,7 @@ export default{
       background-size:28px
       position:absolute
       top:12px
-      left:15px 
+      left:15px
 .content-part
 	.header
 		position:relative
